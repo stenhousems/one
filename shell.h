@@ -7,14 +7,14 @@
 #define TRUE  1
 #define FALSE 0
 
+#define BUFFER 1024
+
 typedef struct {
 	char* name;	   // name of command (must malloc)
 	int argc;	   // total number of arguments
 	char** argv;	   // argument values (must malloc)
 
 } command_t;
-
-char *read(void);
 
 /* ----------------------------------------------------------------------------
 

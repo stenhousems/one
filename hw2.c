@@ -19,45 +19,32 @@
 //				argv = array of argument values
 //
 //
-int main(int argc, char** argv) {
+int main(int argc, char** argv)
+{
+	int done = 0;
+	char line[BUFFER]; // Array of size 1024
 
-	// ----------------------------------
-	// Pseudocode
-	// ----------------------------------
-	// while (!done)
-	//		print the prompt (i.e. >, #, or $ ... your choice)
-	//		read command line
-	//		parse the command line
-        //      if (parsed command is "exit")
-        //      	done = true
-	//  	else if (is _builtin(...))
-	//			do_builtin(...)
-	//		else if (find_fullpath(...))
-	//  		execute(...)
-	//		else
-	//			error()
-	// 		cleanup(...)
-	//
-	int done = 1;
+	char* fullpath;
+	command_t cmd;
+
+	// A shell does three things:
+	// Read, Parse, Execute
 
 	do {
-		printf("> ");
-		char cmd = *read();
-
-
-		parse(cmd, );
+		printf("$ "); // prompt
+		fgets(line, BUFFER, stdin); // Read
+		parse(line, &cmd); // Parse
 		if (argv[0] = "exit")
-			done = 0;
+			done = 1;
 		else if (is_builtin(cmd) == 1)
 			do_builtin(cmd);
-		else if (find_fullpath(cmd) == 1)
-			execute(cmd);
+		else if (find_fullpath(fullpath, cmd) == 1)
+			execute(cmd); // Execute
 		else
 			perror("ERROR!\n");
 		cleanup(cmd);
-	} while(done = 1);
+	} while(done = 0);
 
 	printf("Thank you for using StenhouseShell.");
 	return 0;
-
 }
