@@ -1,0 +1,80 @@
+8/26/16
+
+A translator program converts our instructions to machine instructions for the target computer.
+
+Interpreter: translation on the fly, requires a virtual machine
+Compiler: translation all at once, compiled at the machine level, more 	optimized, no garbage collection, not ultra-portable
+
+Program translation:
+	High-level -> (Complier/Interpreter) -> Assembly -> (Assembler) -> 		Machine code
+
+Basic terminal commands:
+	ls: list directory contents
+	cd: change directory
+	pwd: print working directory
+	mkdir: make directory
+	man: manual
+	top: display processes
+	chmod: change file mode bits
+	
+/root/ directory is the starting point of the OS.
+/proc/ numbers are all the processes running on machine at one time.
+All processes are procedural.
+
+Windows: Registry contains all install/config files
+UNIX/Linux: Individual dot folders contain files
+
+9 permission bits for Linux files:
+	drwx|rwx|rwx
+	Owner|Group|Everyone
+	d: is directory?
+	rwx: read, write, execute?
+
+Ex: chmod 777 test.txt gives "test.txt" open permissions to all users
+
+8/29/16
+
+More terminal commands:
+	env: run a program in a modified environment
+	echo: display a line of text (i.e., variables)
+	which: locate a command or filename
+	ps: report a snapshot of the current processes
+	grep: print lines matching a pattern
+	gcc: GNU project C compiler
+
+$PATH shows where to look for executable, modifiable
+For example, typing "gedit" will have the OS find the gedit executable in the path.
+
+"gedit ex1.c & " will fork the process, or, open ex1.c in gedit while keeping the terminal functional
+
+"gcc -S ex1.c " will create the assembly language for ex1.c
+"gcc -c ex1.s " will create the binary language from the assembly language
+"gcc -o ex1 ex1.o " will create an executable
+"./ ex1 " will run the executable
+
+OR
+
+"gcc -o ex1 ex1.c " will do the first three steps in one line
+
+Makefile will allow you to automate your build process.
+
+9/5/16
+
+int* p = malloc(sizeof(int)); // a pointer
+int* pp = p; // a pointer to a pointer (/340/ex/ex1.c)
+
+In C, when you define an array, a memory reference pointer will be returned which you can then maniuplate as an array. (/340/ex/ex2.c)
+
+void incr( int a ); // pass by value
+void incr( int* a ); // pass by reference
+
+-------------------------------
+int* a = malloc(sizeof(int));
+(*a) = 10;
+
+int a = 10;
+incr(&a);
+-------------------------------
+
+O/S is loaded in main memory.
+
